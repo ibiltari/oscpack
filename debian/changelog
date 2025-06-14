@@ -1,3 +1,10 @@
+oscpack (1.1.0-4) UNRELEASED; urgency=medium
+
+  * fix BIG_ENDIAN return variables in repository, so removing patch
+  * Increase udp receive buffer size to 8196 to accommodate for bigger osc messages
+
+ -- Ion Reguera <ion@stagelab.coop>  Sat, 14 Jun 2025 12:52:38 +0200
+
 oscpack (1.1.0-3) unstable; urgency=medium
 
   * QA upload.
