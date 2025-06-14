@@ -16,9 +16,9 @@ UNAME := $(shell uname)
 
 CXX := g++
 INCLUDES := -I.
-COPTS  := -Wall -Wextra -O3
+COPTS  := -Wall -Wextra -O3 -fPIC
 CDEBUG := -Wall -Wextra -g 
-CXXFLAGS := $(COPTS) $(INCLUDES) -D$(ENDIANESS)
+CXXFLAGS := $(COPTS) $(INCLUDES) -D$(ENDIANESS) $(CXXFLAGS)
 
 BINDIR := bin
 PREFIX := /usr/local
@@ -111,7 +111,7 @@ ifeq ($(UNAME), Darwin)
 	$(CXX) -dynamiclib -Wl,-install_name,$(LIBSONAME) -o $(LIBFILENAME) $(LIBOBJECTS) -lc
 else
 	#GNU/Linux case
-	$(CXX) -shared -Wl,-soname,$(LIBSONAME) -o $(LIBFILENAME) $(LIBOBJECTS) -lc
+	$(CXX) $(LDFLAGS) -shared -Wl,-soname,$(LIBSONAME).1 -o $(LIBFILENAME) $(LIBOBJECTS) -lc
 endif
 
 lib: $(LIBFILENAME)
