@@ -1,0 +1,26 @@
+Description: Do not drop CXXFLAGS in Makefile
+ The original CXXFLAGS overwrites the CXXFLAGS, this patch adds them again.
+Author: Tobias Frost <tobi@debian.org>
+Last-Update: 2017-07-22
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/Makefile
++++ b/Makefile
+@@ -18,7 +18,7 @@
+ INCLUDES := -I.
+ COPTS  := -Wall -Wextra -O3 -fPIC
+ CDEBUG := -Wall -Wextra -g 
+-CXXFLAGS := $(COPTS) $(INCLUDES) -D$(ENDIANESS)
++CXXFLAGS := $(COPTS) $(INCLUDES) -D$(ENDIANESS) $(CXXFLAGS)
+ 
+ BINDIR := bin
+ PREFIX := /usr/local
+@@ -111,7 +111,7 @@
+ 	$(CXX) -dynamiclib -Wl,-install_name,$(LIBSONAME) -o $(LIBFILENAME) $(LIBOBJECTS) -lc
+ else
+ 	#GNU/Linux case
+-	$(CXX) -shared -Wl,-soname,$(LIBSONAME).1 -o $(LIBFILENAME) $(LIBOBJECTS) -lc
++	$(CXX) $(LDFLAGS) -shared -Wl,-soname,$(LIBSONAME).1 -o $(LIBFILENAME) $(LIBOBJECTS) -lc
+ endif
+ 
+ lib: $(LIBFILENAME)

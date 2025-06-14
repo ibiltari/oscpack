@@ -1,0 +1,4 @@
+big-endian-FTBFS.patch
+fpic.diff
+soname.diff
+use-system-cflags.patch

@@ -1,0 +1,52 @@
+oscpack (1.1.0-3) unstable; urgency=medium
+
+  * QA upload.
+  * Drop Vcs fields pointing to shutdown repository.
+
+ -- Bastian Germann <bage@debian.org>  Fri, 17 Feb 2023 10:49:49 +0100
+
+oscpack (1.1.0-2) unstable; urgency=medium
+
+  * QA upload.
+  * New patch big-endian-FTBFS.patch to fix FTBFS on big endian.
+
+ -- Tobias Frost <tobi@debian.org>  Sun, 23 Jul 2017 09:24:16 +0200
+
+oscpack (1.1.0-1) unstable; urgency=medium
+
+  * QA upload
+  * Set Maintainer to QA Group.
+  * New upstream version.
+  * Patches:
+     - Refreshed patch fpic.diff and soname.diff
+     - New patch use-system-cflags -- do not drop debhelper's CXXFLAGS in the
+       Makefile. Also pass LDFLAGS to the linker.
+     - Drop patch newer-gcc.diff -- no longer needed
+  * d/control
+     - Change homepage to new location.
+     - Bump S-V to 4.0.0 -- no changes required
+     - Fix lintian warning description-synopsis-starts-with-article --
+       dropping the "A" from the short description
+     - Move packaging repository to collab-maint
+  * Change to automatic debug package
+     - remove dbg pacakge from d/control and update d/rules
+  * Make package multiarch.
+  * Bump d/compat to level 10 and so B-D on debhelper>10
+  * Update d/rules install override for new library name
+  * Update d/copyright
+     - with verbatim copy of upstream's license
+     - newer Machine-readable format specifcation,
+     - update copyright years,
+     - add myself to the debian/* section.
+     - reorder paragraphs as debian/* section would be not ignored otherwise
+  * Override obsolete-url-in-packaging -- the source is hosted at
+    code.google.com
+  * Enable hardening
+
+ -- Tobias Frost <tobi@debian.org>  Sun, 23 Jul 2017 01:31:17 +0200
+
+oscpack (1.0.2-1) unstable; urgency=low
+
+  * Initial release (Closes: #609341)
+
+ -- Monty Taylor <mordred@inaugust.com>  Thu, 26 Aug 2010 23:00:35 -0700
